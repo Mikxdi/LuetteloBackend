@@ -38,7 +38,7 @@ app.get('/api/persons/:id', (req, res, next) => {
 })
 
 app.post('/api/persons', (request, response, next) => {
-  const body = request.body 
+  const body = request.body
   const person = new Person({
     name: body.name,
     number: body.number
@@ -71,7 +71,7 @@ app.delete('/api/persons/:id', (req, res, next) => {
 })
 
 app.get('/api/persons/:id', (request, response) => {
-  Person.findById(request.params.id).then(person =>{
+  Person.findById(request.params.id).then(person => {
     response.json(person.toJSON)
   })
 })
