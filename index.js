@@ -18,7 +18,7 @@ app.use(cors())
 app.get('/info', (req, res) => {
   Person.find({}).then(people => {
     const date = new Date()
-    res.send(`<p>There is currently ${people.length} persons phonenumbers</p>
+    res.send(`<p>There is currently almost ${people.length} persons phonenumbers</p>
         <p>${date}</p>`)
   })
 })
