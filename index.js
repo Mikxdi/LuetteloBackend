@@ -37,36 +37,15 @@ app.get('/api/persons/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
-app.post('/api/persons', (request, response) => {
-  const body = request.body
-
-  /*if (!body.number || !body.name) {
-    return response.status(400).json({ 
-      error: 'name or number missing' 
-    })
-  }
-  if (persons.some(person => person.name === body.name)) {
-    return res.status(400).json({
-      error: 'name must be unique'
-    })
-  }
-  const person = {
-    name: body.name,
-    number: body.number,
-    id: generateId()
-  }
-
-  persons = persons.concat(person)
-
-  response.json(person)*/
+app.post('/api/persons', (request, response, next) => {
+  const body = request.body 
   const person = new Person({
     name: body.name,
     number: body.number
   })
-
   person.save().then(savedPerson => {
     response.json(savedPerson.toJSON())
-}).catch(error => next(error))
+  }).catch(error => next(error))
 })
 
 
